@@ -1,0 +1,2 @@
+$('#books_index').html("<%= j(render 'books/comment', book: @book) %>", ); # 発火して欲しい箇所のID記述と、render記述
+$(".text_field").val(""); # 発火した際のtext_fieldを空白に更新するように指定

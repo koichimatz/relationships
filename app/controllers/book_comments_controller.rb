@@ -7,7 +7,10 @@ class BookCommentsController < ApplicationController
 		@book_comment.book_id = @book.id
 		@book_comment.user_id = current_user.id
 		if @book_comment.save
-  		redirect_to book_path(@book.id)
+  	  #redirect_to book_path(@book.id)
+ 	 	  # createアクションとdestroyアクションのredirect_toを削除します。
+      # redirect_toを指定してしまうと画面遷移が行われてしまい、非同期通信が行われなくなってしまうためです。
+
 		else
 		  render 'books/show'
 		end
@@ -17,7 +20,7 @@ class BookCommentsController < ApplicationController
 		@book = Book.find(params[:book_id])
   	book_comment = @book.book_comments.find(params[:id])
 		book_comment.destroy
-		redirect_to request.referer
+	#redirect_to request.referer
 	end
 
 	private
